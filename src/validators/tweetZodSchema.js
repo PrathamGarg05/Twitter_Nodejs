@@ -1,5 +1,5 @@
 import { z } from "zod";    
 
 export const tweetZodSchema = z.object({
-    tweet : z.string().min(1).max(50)
+    body : z.string().min(1).max(50)
 });
