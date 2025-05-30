@@ -1,7 +1,7 @@
 import { Filter } from "bad-words";
 import { createTweet as createTweetRepo } from "../repository/tweetRepo.js";
 
-export const createTweetService = async ({body}) => {
+export const createTweetService = async ({body, image}) => {
     const filter = new Filter();
 
     if(filter.isProfane(body)) {
@@ -13,7 +13,7 @@ export const createTweetService = async ({body}) => {
         };
     }
 
-    const tweet = await createTweetRepo({body});
+    const tweet = await createTweetRepo({body, image});
 
     return tweet
 }

@@ -7,7 +7,11 @@ const tweetSchema = new mongoose.Schema({
         required : true,
         maxLength : 200,
         trim : true
+    },
+    image : {
+        type : String,
+        default: null
     }
-});
+}, {timestamps: true});  
 
 export const Tweet = mongoose.model("Tweet", tweetSchema);
