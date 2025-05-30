@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import { PORT } from './config/serverConfig.js';
 import apiRouter from './routes/apiRoutes.js';
+import connectDB from './config/dbConfig.js';
 
 const app = express();
 
@@ -26,5 +27,6 @@ app.all('/*splat', (req, res) => {
 
 app.listen(PORT, (req,res) => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    connectDB(); 
 });
 export default app;
