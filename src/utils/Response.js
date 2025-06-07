@@ -17,7 +17,7 @@ export const errorResponse = (error, res) => {
         })
     }
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        message : "Internal Server Error abc",
+        message : "server error",
         success : false
     })
 };
