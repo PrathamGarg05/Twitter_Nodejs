@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { createTweetService, getTweetsService } from "../services/tweetService.js";
+import { errorResponse, successResponse } from "../utils/Response.js";
 
 
 export const getTweetsById = (req,res) => {
@@ -14,47 +15,19 @@ export const createTweet = async (req,res) => {
         const response = await createTweetService({
             body : req.body.body,
             image : req.file?.location,
-
         });
-        return res.status(201).json({
-            success : true,
-            data: response,
-            message: "tweet created successfully"
-        });
+        return successResponse(response, StatusCodes.CREATED, "tweet created successfully", res);
     }catch(error){
-        console.log(error);
-
-        if(error.status){
-            return res.status(error.status).json({
-                message : error.message,
-                success : false
-            })
-        }
-        return res.status(500).json({
-            message: " server error "
-        }); 
+        return errorResponse(error,res);
     }
 }
 
 export const getTweets = async (req,res) => {
     try{
         const response = await getTweetsService();
-        return res.status(StatusCodes.CREATED).json({
-            success: true,
-            data: response,
-            message: "tweets fetched successfully"
-        });
+        return successResponse(response, StatusCodes.OK, "tweets fetched successfully", res);
     } catch(error) {
         // console.log(error);
-        if(error.status){
-            return res.status(error.status).json({
-                message : error.message,
-                success : false
-            })
-        }
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            message: "server error",
-            success : false
-        });
+        return errorResponse(error,res);
     }
 }
