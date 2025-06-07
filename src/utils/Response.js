@@ -9,6 +9,7 @@ export const successResponse = (response, status, message , res) => {
 };
 
 export const errorResponse = (error, res) => {
+    console.log(error);
     if(error.status){
         return res.status(error.status).json({
             message : error.message, 
@@ -16,7 +17,7 @@ export const errorResponse = (error, res) => {
         })
     }
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        message : "Internal Server Error",
+        message : "Internal Server Error abc",
         success : false
     })
 };

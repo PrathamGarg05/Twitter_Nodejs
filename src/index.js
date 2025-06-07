@@ -11,6 +11,7 @@ app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded());
+app.use(express.raw());
 
 
 app.use('/api',apiRouter);
