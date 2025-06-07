@@ -1,5 +1,6 @@
 import { Filter } from "bad-words";
-import { createTweet as createTweetRepo } from "../repository/tweetRepo.js";
+import { createTweet as createTweetRepo , getTweets as getTweetsRepo} from "../repository/tweetRepo.js";
+
 
 export const createTweetService = async ({body, image}) => {
     const filter = new Filter();
@@ -16,4 +17,16 @@ export const createTweetService = async ({body, image}) => {
     const tweet = await createTweetRepo({body, image});
 
     return tweet
+}
+
+export const getTweetsService = async() => {
+     try{
+        const tweets = await getTweetsRepo();
+        return tweets;  
+     }  catch(error) {
+        throw {
+            message : "Failed to fetch tweets",
+            status : 500
+        };
+     }
 }

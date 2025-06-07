@@ -9,7 +9,7 @@ export const createTweet = async ({body, image}) => {
     }
 }
 
-export const getTweets = async ({body}) => {
+export const getTweets = async () => {
     try{
         const tweets = await Tweet.find();
         return tweets;
