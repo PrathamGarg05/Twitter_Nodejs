@@ -3,10 +3,11 @@ import { createTweet, getTweets, getTweetsById } from '../../controllers/tweetCo
 import { tweetZodSchema } from '../../validators/tweetZodSchema.js';
 import {validate} from '../../validators/zodValidator.js'
 import { s3Uploader } from '../../config/multer.js';
+import { authenticateToken } from '../../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', getTweets);
+router.get('/', authenticateToken, getTweets);
 
 router.get('/:id', getTweetsById);
 

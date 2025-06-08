@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import { PORT } from './config/serverConfig.js';
 import apiRouter from './routes/apiRoutes.js';
 import connectDB from './config/dbConfig.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded());
 app.use(express.raw());
-
+app.use(cookieParser());
 
 app.use('/api',apiRouter);
 

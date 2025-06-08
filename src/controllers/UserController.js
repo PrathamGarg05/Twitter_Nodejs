@@ -25,8 +25,14 @@ export const signinUser = async (req , res) => {
             email : req.body.email
         });
 
+        res.cookie("token", token,{
+            httpOnly: true,
+            maxAge: 3600,
+            sameSite: "Strict"
+        })
+
         return successResponse(
-            {token, user : { id: user._id, email: user.email,username:user.username}},
+            { user : { id: user._id, email: user.email,username:user.username}},
             StatusCodes.OK, 
             "User signed in successfully", 
             res);

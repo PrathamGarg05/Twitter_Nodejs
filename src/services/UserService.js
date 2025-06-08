@@ -34,7 +34,7 @@ export const siginService = async ({username,password,email}) => {
         };
     }
 
-const token = generateToken(user);
+    const token = generateToken(user);
 
     return {
         token,

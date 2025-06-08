@@ -1,3 +1,3 @@
 {
-    "iis.configDir": ""
+    "iis.configDir": "${workspaceFolder}\\node_modules\\dateformat\\.vs\\config"
 }
